@@ -1,8 +1,8 @@
 const Mongoose = require('mongoose');
 const articleSchema = new Mongoose.Schema({
     'autor': {
-        type: Mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        type: String,
+        required: [true, 'El nombre del autor del articulo es requerido']
     },
     'title': {
         type: String,
@@ -26,7 +26,7 @@ const articleSchema = new Mongoose.Schema({
     },
     'date': {
         type: Date,
-        // default: Date.now()
+        default: Date.now()
     },
     'isActive': {
         type: Boolean,

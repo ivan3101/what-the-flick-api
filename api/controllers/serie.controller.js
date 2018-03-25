@@ -50,7 +50,7 @@ module.exports.addSerie = async (req, res) => {
             'payload': {
                 'statusCode': 201,
                 'error': null,
-                'message': 'El articulo ha sido creado con exito'
+                'message': 'La serie ha sido creada con exito'
             }
         });
 };
