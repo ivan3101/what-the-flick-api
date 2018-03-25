@@ -18,7 +18,7 @@ module.exports.getMoviesByCategory = async (req, res) => {
     const page = req.query.page || 1;
     const category = req.params.category;
     const movies = await Movie.find({
-        'category': category,
+        'category': new RegExp(category, 'i'),
         'isActive': true
     })
         .skip((quantity * page) - quantity)

@@ -18,7 +18,7 @@ module.exports.getSeriesByCategory = async (req, res) => {
     const page = req.query.page || 1;
     const category = req.params.category;
     const series = await Serie.find({
-        'category': category,
+        'category': new RegExp(category, 'i'),
         'isActive': true
     })
         .skip((quantity * page) - quantity)

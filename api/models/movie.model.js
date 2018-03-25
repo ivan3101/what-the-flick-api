@@ -13,7 +13,7 @@ const movieSchema = new Mongoose.Schema({
         required: [true, 'La imagen de la pelicula es requerida']
     },
     'category': {
-        type: String,
+        type: [String],
         required: [true, 'La categoria de la pelicula es requerida']
     },
     'director': {

@@ -13,7 +13,7 @@ const serieSchema = new Mongoose.Schema({
         required: [true, 'La imagen de la serie es requerida']
     },
     'category': {
-        type: String,
+        type: [String],
         required: [true, 'La categoria de la serie es requerida']
     },
     'creator': {

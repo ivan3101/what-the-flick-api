@@ -26,7 +26,7 @@ const articleSchema = new Mongoose.Schema({
     },
     'date': {
         type: Date,
-        default: Date.now()
+        // default: Date.now()
     },
     'isActive': {
         type: Boolean,
