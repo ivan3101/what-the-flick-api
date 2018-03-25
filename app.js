@@ -1,3 +1,5 @@
+require('./api/config/db_connection');
+
 const Morgan = require('morgan');
 const BodyParser = require('body-parser');
 const Cors = require('cors');
