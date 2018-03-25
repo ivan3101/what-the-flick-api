@@ -7,6 +7,10 @@ const Helmet = require('helmet');
 const Express = require('express');
 const App = Express();
 const PORT = process.env.PORT || 3000;
+const Routes = require('./api/routes');
+const AuthenticationError = require('./api/handlers/authenticationHandler').authMiddleware;
+const ValidationError = require('./api/handlers/validationError');
+const ErrorHandler = require('./api/handlers/handleErrors');
 
 App.use(Helmet());
 App.use(Cors());
@@ -15,4 +19,10 @@ else App.use(Morgan('short'));
 App.use(BodyParser.urlencoded({extended: false}));
 App.use(BodyParser.json());
 
-App.listen(() => console.log(`API is running in port: ${PORT}`));
+App.use('/api', Routes);
+
+App.use(AuthenticationError);
+App.use(ValidationError);
+App.use(ErrorHandler);
+
+App.listen(PORT, () => console.log(`API is running in port: ${PORT}`));

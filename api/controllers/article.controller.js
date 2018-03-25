@@ -1,5 +1,5 @@
 const Article = require('../models/article.model');
-// const Comment = require('../models/comment.model');
+const Comment = require('../models/comment.model');
 
 module.exports.getAllArticles = async (req, res) => {
     const quantity = req.query.quantity || 8;
@@ -63,17 +63,17 @@ module.exports.addArticle = async (req, res) => {
         });
 };
 
-// module.exports.addComment = async (req, res) => {
-//     const id = req.params.id;
-//     const comment = new Comment(req.body);
-//     await comment.save();
-//     const article = await Article.findOne({
-//         '_id': id,
-//         'isActive': true
-//     });
-//     article.comments.push(comment._id);
-//     await article.save();
-//     res
-//         .status(201)
-//         .json()
-// };
+module.exports.addComment = async (req, res) => {
+    const id = req.params.id;
+    const comment = new Comment(req.body);
+    await comment.save();
+    const article = await Article.findOne({
+        '_id': id,
+        'isActive': true
+    });
+    article.comments.push(comment._id);
+    await article.save();
+    res
+        .status(201)
+        .json()
+};
